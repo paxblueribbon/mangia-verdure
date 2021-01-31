@@ -1,5 +1,9 @@
 .jumbotron {
-    background-color: springgreen;
+    background-color: #00ff7f;
+}
+
+.loadMore {
+  background-color: #00ff7f;
 }
 
 .ingInput {
@@ -14,7 +18,6 @@ body {
 }
 
 .top-buffer { margin-top:20px; }
-
 
 .typeahead,
 .tt-query,
