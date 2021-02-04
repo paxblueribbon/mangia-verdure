@@ -37,12 +37,10 @@ $(document).ready(function() {
     }
 
         $('#ing1').on('typeahead:selected', function(evt, item) {
-            // do what you want with the item here
-            $(function() {
-                $(".row .col6 .card .card-body").each(function() {
-                  $(this).html("Found this one");
+                $(".card-body").each(function( index ) {
+                    $(this).html(localDb[item][index].toString().split(',').join(" & <br />"));
+                    console.log(index)
                 });
-              });
             console.log(item)
 
         })
