@@ -2,121 +2,138 @@
 <html lang="en">
 
 <head>
-    <title>Mangia Verdure</title>
-    <link rel="shortcut icon" type="img/jpg" href="/favicon/favicon.ico">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <title>Mangia Verdure</title>
+  <link rel="shortcut icon" type="img/jpg" href="/favicon/favicon.ico">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-4 col-sm-3 col-md-2 align-self-center">
-                    <a href="#">
-                        <img src="MVLogo.png" class="img-fluid" alt="Mangia Verdure Logo">
-                    </a>
-                </div>
-                <div class="col">
-                    <h1 class="display-3 title-font">Mangia Verdure</h1>
-                    <p class="lead title-font">Vegetarian & Vegan Flavor Planning</p>
-                </div>
-            </div>
+  <div class="container-fluid"></div>
+  <div class="jumbotron jumbotron-fluid pb-0 pt-2">
+      <div class="row justify-content-center">
+        <div class="col-4 col-sm-3 col-md-2 align-self-center">
+          <a href="#">
+            <img src="MVLogo.png" class="img-fluid" alt="Mangia Verdure Logo">
+          </a>
         </div>
+        <div class="col">
+          <h1 class="display-3 title-font">Mangia Verdure</h1>
+          <p class="lead title-font">Vegetarian & Vegan Flavor Planning</p>
+        </div>
+      </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <input type="text" class="form-control ingInput typeahead" id="ing1" rows="1"
-                        placeholder="Type An Ingredient Here" autocomplete="off">
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row align-content-center">
+      <div class="col-4 offset-4">
+        <div class="form-group">
+          <input type="search" class="form-control ingInput typeahead" id="ing1" rows="1"
+            placeholder="Type An Ingredient Here" autocomplete="off">
         </div>
-        <div class="row">
-            <div class="col-6 col-md-4">
-                <div class="card bg-success h-11">
-                    <div id="cardBody1" class="card-body">
-                        <h3 class="card-text">Card 1<br>Ing 2</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="card bg-success h-100">
-                    <div id="cardBody2" class="card-body">
-                        <h3 class="card-text">Card 2</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="w-100 d-block d-md-none"></div>
-
-            <div class="col-6 col-md-4 pt-3 pt-md-0">
-                <div class="card bg-success h-100">
-                    <div class="card-body">
-                        <h3 class="card-text">Card 3</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="w-100 d-none d-md-block"></div>
-            <div class="col-6 col-md-4 pt-3 h-100">
-                <div class="card bg-success">
-                    <div class="card-body">
-                        <h3 class="card-text">Card 4</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="w-100 d-block d-md-none"></div>
-            <div class="col-6 col-md-4 pt-3 h-100">
-                <div class="card bg-success">
-                    <div class="card-body">
-                        <h3 class="card-text">Card 5</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 pt-3 h-100">
-                <div class="card bg-success">
-                    <div class="card-body">
-                        <h3 class="card-text">Card 6</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-                <a class="btn col-12 pt-3" role="button" href="#">
-                    <div class="card">
-                        <div class="card-body loadMore">
-                            <h3 class="text-center">Load More</h3>
-                        </div>
-                    </div>
-                </a>
-        </div>
+      </div>
     </div>
-    <script>
+    <div class="row nonExist mx-auto">
+      <div class="col-auto align-text-center">
+        <h3>This item doesn't seem to exist.</h3>
+      </div>
+    </div>
+      <row class="row nonExist col-8 offset-2">
+        <div class="col-auto align-text-center">
+          <div role="button" class="btn btn-success btnCreate">Click here to create it</div>
+        </div>
+      </row>
 
-    </script>
+    </div>
+    <div class="row results1 d-none">
+      <div class="col-6 col-md-4">
+        <div class="card bg-success h-100 animate__animated animate__backInDown">
+          <div class="card-title"></div>
+          <div class="card-body">
+            <h3 class="card-text">Card 1<br>Ing 2</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="card bg-success h-100 animate__animated animate__backInDown">
+          <div class="card-title"></div>
+          <div class="card-body">
+            <h3 class="card-text">Card 2</h3>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 d-block d-md-none"></div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <!-- jQuery.typeahead -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
-    <script src="/js/scripts.js"></script>
+      <div class="col-6 col-md-4 pt-3 pt-md-0">
+        <div class="card bg-success h-100 animate__animated animate__backInDown">
+          <div class="card-title"></div>
+          <div class="card-body">
+            <h3 class="card-text">Card 3</h3>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 d-none d-md-block"></div>
+      <div class="col-6 col-md-4 pt-3 h-100 animate__animated animate__backInDown">
+        <div class="card bg-success">
+          <div class="card-title"></div>
+          <div class="card-body">
+            <h3 class="card-text">Card 4</h3>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 d-block d-md-none"></div>
+      <div class="col-6 col-md-4 pt-3 h-100 animate__animated animate__backInDown">
+        <div class="card bg-success">
+          <div class="card-title"></div>
+          <div class="card-body">
+            <h3 class="card-text">Card 5</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 pt-3 h-100">
+        <div class="card bg-success animate__animated animate__backInDown">
+          <div class="card-title"></div>
+          <div class="card-body">
+            <h3 class="card-text">Card 6</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row results1 d-none">
+      <a class="btn col-12 pt-3 disabled" role="button" href="#">
+        <div class="card loadMoreCard">
+          <div class="card-body loadMore">
+            <h3 class="text-center">Load More</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+  <script>
+  </script>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!-- jQuery.typeahead -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+  <script src="/js/scripts.js"></script>
 
 
 

@@ -16,6 +16,32 @@ body {
 .title-font {
     font-family: 'Bodoni Moda', serif;
 }
+.card {
+  font-family: 'Bodoni Moda', serif;
+  text-align: center;
+}
+
+.card-body {
+  padding-top: 0;
+}
+
+.nonExist {
+  display:inline-block;
+
+}
+
+.btnCreate {
+  display:inline-block;
+  text-align:center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.card-title {
+  text-decoration: underline;
+}
 
 .top-buffer { margin-top:20px; }
 
