@@ -25,16 +25,6 @@ body {
   padding-top: 0;
 }
 
-.nonExist {
-  display:inline-block;
-
-}
-
-.btnCreate {
-  display:inline-block;
-  text-align:center;
-}
-
 h3 {
   text-align: center;
 }

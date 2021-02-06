@@ -41,6 +41,20 @@ $(document).ready(function () {
     coffee: {}
   }
 
+  $("#createButton").on('click',function(){
+    var value = $("#ing1").val()
+    console.log(value);
+    $("#mainIngName").val(value);
+  })
+
+  $("#submitButton").on('click', function(){
+    var mainIng = $("#mainIngName").val()
+    var combWith = $("#added-ing-text").val()
+    var arr = [combWith]
+    localDb[mainIng] = arr
+  })
+
+
   $('#ing1').on('typeahead:selected', function (evt, item) {
     if (localDb.hasOwnProperty(item.value)) {
       $(".card").each(function (index) {
@@ -52,7 +66,6 @@ $(document).ready(function () {
           // console.log(index)
 
         }
-
       });
     }
     else {
