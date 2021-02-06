@@ -54,6 +54,12 @@ $(document).ready(function () {
     localDb[mainIng] = arr
   })
 
+  $('#ing1').on('input', function(){
+    console.log(this.value);
+    if (this.value === "") {
+      $(".nonExist").addClass("d-none");
+    }
+  })
 
   $('#ing1').on('typeahead:selected', function (evt, item) {
     if (localDb.hasOwnProperty(item.value)) {

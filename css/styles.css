@@ -50,6 +50,22 @@ h3 {
           border-radius: 8px;
   outline: none;
 }
+.bottom-align-text {
+  position:relative;
+  bottom: 0;
+  left:  0;
+}
+
+.text-responsive {
+  font-size: calc(100% + 1vw + 1vh);
+}
+
+.bottom-column
+{
+    float: none;
+    display: table-cell;
+    vertical-align: bottom;
+}
 
 .typeahead {
   background-color: #fff;
