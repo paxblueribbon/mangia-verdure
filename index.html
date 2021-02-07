@@ -28,7 +28,7 @@
           <img src="MVLogo.png" class="img-fluid float-left" alt="Mangia Verdure Logo">
         </a>
       </div>
-      <div class="col bottom-column align-self-center">
+      <div class="col bottom-column align-self-center pr-0">
         <h1 class="display-3 title-font">Mangia Verdure</h1>
         <p class="lead title-font align-text-bottom d-none d-md-inline">Vegetarian & Vegan Flavor Planning</p>
       </div>
@@ -95,6 +95,22 @@
         </div>
       </div>
     </div>
+    <div class="row orTry">
+      <div class="col">
+        <h4 class="text-center">Or Try One Of These</h4>
+      </div>
+    </div>
+    <div class="row justify-content-center orTry">
+      <div class="col-3 text-center">
+        <div class="suggestionButton btn btn-outline-success text-center">🍎 Apple</div>
+      </div>
+      <div class="col-3 text-center">
+        <div class="suggestionButton btn btn-outline-success text-center">🍌 Banana</div>
+      </div>
+      <div class="col-3 text-center">
+        <div class="suggestionButton btn btn-outline-success text-center">🥥 Coconut</div>
+      </div>
+    </div>
     <div class="row nonExist justify-content-center d-none">
       <div class="col-6 mx-auto">
         <h3>This item doesn't seem to exist.</h3>
@@ -102,7 +118,8 @@
     </div>
     <row class="row nonExist text-center justify-content-center d-none">
       <div class="col-6 mx-auto">
-        <div id="createButton" data-target="#newIngModal" data-toggle="modal" role="button" class="btn btn-success btnCreate">Click here
+        <div id="createButton" data-target="#newIngModal" data-toggle="modal" role="button"
+          class="btn btn-success btnCreate">Click here
           to create it</div>
       </div>
     </row>
@@ -186,6 +203,7 @@
     crossorigin="anonymous"></script>
   <!-- jQuery.typeahead -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+  <script type="module" src="/node_modules/emoji-strip/dist/emoji-strip.min.js"></script>
   <script src="/js/scripts.js"></script>
 
 

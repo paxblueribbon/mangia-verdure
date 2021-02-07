@@ -38,7 +38,23 @@ $(document).ready(function () {
       4: [""],
       5: [""]
     },
-    coffee: {}
+    "banana": {
+      0: ["Almond Milk", "Nutmeg", "Vanilla"],
+      1: ["Almonds", "Oatmeal"],
+      2: ["Apple Juice", "Cinnamon"],
+      3: ["Apricots", "Yogurt"],
+      4: ["Cashews", "Pineapple"],
+      5: ["Peaches", "Raspberries"]
+    },
+    "coffee": {},
+    "coconut": {
+      0: ["Curry", "Peanuts", "Tofu"],
+      1: ["Brown Sugar", "Vanilla", "Ginger"],
+      2: ["Cranberries", "Granola", "Hazelnuts"],
+      3: ["Lemongrass", "Passionfruit"],
+      4: [""],
+      5: []
+    }
   }
 
   $("#createButton").on('click',function(){
@@ -58,7 +74,24 @@ $(document).ready(function () {
     console.log(this.value);
     if (this.value === "") {
       $(".nonExist").addClass("d-none");
+      $(".results1").addClass("d-none");
+      $(".orTry").removeClass("d-none")
     }
+  })
+
+  $('.suggestionButton').on('click', function() {
+    var t = $(this).text()
+    var strippedT = emojiStrip(t).trim()
+    console.log(t);
+    $("#ing1").val(t);
+    $(".card").each(function (index) {
+      if (!$(this).hasClass("loadMoreCard")) {
+        $(this).children(".card-title").html(t + " &");
+        $(this).children(".card-body").html(localDb[strippedT.toLowerCase()][index].toString().split(',').join(" & <br />"));
+        $('.results1').removeClass("d-none");
+        $('.orTry').addClass('d-none')
+      }
+    });
   })
 
   $('#ing1').on('typeahead:selected', function (evt, item) {

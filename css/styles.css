@@ -56,9 +56,12 @@ h3 {
   left:  0;
 }
 
-.text-responsive {
-  font-size: calc(100% + 1vw + 1vh);
+h1 {
+  margin-right: 0px;
+  padding-right: 0px;
 }
+
+
 
 .bottom-column
 {
