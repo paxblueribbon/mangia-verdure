@@ -31,12 +31,12 @@ $(document).ready(function () {
       5: [""]
     },
     "black beans": {
-      0: ["Allspice", "Cinnamon", "Cloves", "Ginger", "Maple Syrup", "Orange"],
-      1: ["almonds", "cinnnamon", "rosemary"],
-      2: ["caramel", "nuts"],
-      3: ["cloves", "cranberries", "oranges"],
-      4: [""],
-      5: [""]
+      0: ["Bell Peppers", "Corn", "Scallions"],
+      1: ["Chiles", "Cilantro", "Lime", "Oregano", "Red Onions"],
+      2: ["Mango", "Quinoa"],
+      3: ["Oregano", "Sage", "Thyme"],
+      4: ["Chili Powder", "Cumin", "Garlic", "Onions", "Tomatoes"],
+      5: ["Kale", "Sweet Potatoes"]
     },
     "banana": {
       0: ["Almond Milk", "Nutmeg", "Vanilla"],
@@ -46,14 +46,16 @@ $(document).ready(function () {
       4: ["Cashews", "Pineapple"],
       5: ["Peaches", "Raspberries"]
     },
-    "coffee": {},
+    "coffee": {
+
+    },
     "coconut": {
       0: ["Curry", "Peanuts", "Tofu"],
       1: ["Brown Sugar", "Vanilla", "Ginger"],
       2: ["Cranberries", "Granola", "Hazelnuts"],
       3: ["Lemongrass", "Passionfruit"],
-      4: [""],
-      5: []
+      4: ["Pineapple", "Rum"],
+      5: ["Curry Powder", "Sweet Potatoes"]
     }
   }
 
