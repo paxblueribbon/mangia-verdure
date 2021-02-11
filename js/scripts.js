@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var substringMatcher = function (strs) {
+  const substringMatcher = function (strs) {
     return function findMatches(q, cb) {
       var matches, substringRegex;
 
@@ -21,58 +21,114 @@ $(document).ready(function () {
     };
   };
 
-  var localDb = {
+  const randomizer = {
+    "Apple": "🍎",
+    "Banana": "🍌",
+    "Coconut": "🥥",
+    "Tomato": "🍅",
+    "Avocado": "🥑",
+    "Eggplant": "🍆",
+    "Carrot": "🥕",
+    "Broccoli": "🥦",
+    "get3": function () {
+      let arr = [];
+      let stringArr = [];
+      let max = Object.keys(randomizer).length - 1;
+      while (arr.length < 3) {
+        let randomNum = Math.floor(Math.random() * Math.floor(max))
+        let key = Object.keys(randomizer)[randomNum];
+        if (!arr.includes(randomizer[key])) {
+          arr.push(randomizer[key]);
+          stringArr.push(randomizer[key] + " " + Object.keys(randomizer)[randomNum])
+        }
+      }
+      return stringArr;
+    }
+  }
+//TODO add all emoji foods to db
+//TODO add recipe suggestion section
+//TODO add isVegan isVegetarian props
+
+  const affinityDb = {
     "apple": {
-      0: ["Allspice", "Cinnamon", "Cloves", "Ginger", "Maple Syrup", "Orange"],
-      1: ["almonds", "cinnnamon", "rosemary"],
-      2: ["caramel", "nuts"],
-      3: ["cloves", "cranberries", "oranges"],
-      4: [""],
-      5: [""]
+      affinities: {
+        0: ["Allspice", "Cinnamon", "Cloves", "Ginger", "Maple Syrup", "Orange"],
+        1: ["almonds", "cinnnamon", "rosemary"],
+        2: ["caramel", "nuts"],
+        3: ["cloves", "cranberries", "oranges"],
+        4: [""],
+        5: [""]
+      }
     },
     "black beans": {
-      0: ["Bell Peppers", "Corn", "Scallions"],
-      1: ["Chiles", "Cilantro", "Lime", "Oregano", "Red Onions"],
-      2: ["Mango", "Quinoa"],
-      3: ["Oregano", "Sage", "Thyme"],
-      4: ["Chili Powder", "Cumin", "Garlic", "Onions", "Tomatoes"],
-      5: ["Kale", "Sweet Potatoes"]
+      affinities : {
+        0: ["Bell Peppers", "Corn", "Scallions"],
+        1: ["Chiles", "Cilantro", "Lime", "Oregano", "Red Onions"],
+        2: ["Mango", "Quinoa"],
+        3: ["Oregano", "Sage", "Thyme"],
+        4: ["Chili Powder", "Cumin", "Garlic", "Onions", "Tomatoes"],
+        5: ["Kale", "Sweet Potatoes"]
+      }
     },
     "banana": {
-      0: ["Almond Milk", "Nutmeg", "Vanilla"],
-      1: ["Almonds", "Oatmeal"],
-      2: ["Apple Juice", "Cinnamon"],
-      3: ["Apricots", "Yogurt"],
-      4: ["Cashews", "Pineapple"],
-      5: ["Peaches", "Raspberries"]
+      affinities: {
+        0: ["Almond Milk", "Nutmeg", "Vanilla"],
+        1: ["Almonds", "Oatmeal"],
+        2: ["Apple Juice", "Cinnamon"],
+        3: ["Apricots", "Yogurt"],
+        4: ["Cashews", "Pineapple"],
+        5: ["Peaches", "Raspberries"]
+      },
+    },
+    "broccoli": {
+      affinities: {
+        0: ["Chiles", "Garlic Powder", "Olive Oil"],
+        1: ["Garlic", "Ginger" , "Sesame Oil", "Tamari"],
+        2: []
+
+      }
     },
     "coffee": {
 
     },
     "coconut": {
-      0: ["Curry", "Peanuts", "Tofu"],
-      1: ["Brown Sugar", "Vanilla", "Ginger"],
-      2: ["Cranberries", "Granola", "Hazelnuts"],
-      3: ["Lemongrass", "Passionfruit"],
-      4: ["Pineapple", "Rum"],
-      5: ["Curry Powder", "Sweet Potatoes"]
+      affinities: {
+        0: ["Curry", "Peanuts", "Tofu"],
+        1: ["Brown Sugar", "Vanilla", "Ginger"],
+        2: ["Cranberries", "Granola", "Hazelnuts"],
+        3: ["Lemongrass", "Passionfruit"],
+        4: ["Pineapple", "Rum"],
+        5: ["Curry Powder", "Sweet Potatoes"]
+
+      }
+    },
+    "tomato": {
+      affinities: {
+        0: ["Avocados", "Chiles", "Cilantro", "Garlic", "Scallions", "Vinegar"],
+        1: ["Balsamic Vinegar", "Basil", "Garlic", "Olive Oil"]
+      }
     }
   }
 
-  $("#createButton").on('click',function(){
+  let myThree = randomizer.get3()
+  for (i = 0; i < 3; i++) {
+    $(".suggestionButton").eq(i).text(myThree[i]);
+  }
+
+  $("#createButton").on('click', function () {
     var value = $("#ing1").val()
     console.log(value);
     $("#mainIngName").val(value);
   })
 
-  $("#submitButton").on('click', function(){
+  $("#submitButton").on('click', function () {
     var mainIng = $("#mainIngName").val()
     var combWith = $("#added-ing-text").val()
     var arr = [combWith]
-    localDb[mainIng] = arr
+    affinityDb[mainIng] = arr
   })
 
-  $('#ing1').on('input', function(){
+  $('#ing1').on('input', function () {
     console.log(this.value);
     if (this.value === "") {
       $(".nonExist").addClass("d-none");
@@ -81,44 +137,41 @@ $(document).ready(function () {
     }
   })
 
-  $('.suggestionButton').on('click', function() {
+  $('.suggestionButton').on('click', function () {
     var t = $(this).text()
     var strippedT = emojiStrip(t).trim()
     console.log(t);
     $("#ing1").val(t);
-    $(".card").each(function (index) {
-      if (!$(this).hasClass("loadMoreCard")) {
-        $(this).children(".card-title").html(t + " &");
-        $(this).children(".card-body").html(localDb[strippedT.toLowerCase()][index].toString().split(',').join(" & <br />"));
-        $('.results1').removeClass("d-none");
-        $('.orTry').addClass('d-none')
-      }
-    });
-  })
+    lookupTool(t);
+  });
 
-  $('#ing1').on('typeahead:selected', function (evt, item) {
-    if (localDb.hasOwnProperty(item.value)) {
+  const lookupTool = function (ingoo) {
+    console.log(ingoo.toLowerCase())
+    let strippedIngoo = emojiStrip(ingoo).trim().toLowerCase()
+    if (affinityDb.hasOwnProperty(strippedIngoo)) {
       $(".card").each(function (index) {
-
+        let strippedT = emojiStrip(ingoo).trim()
         if (!$(this).hasClass("loadMoreCard")) {
-          $(this).children(".card-title").html(item.value + " &");
-          $(this).children(".card-body").html(localDb[item.value][index].toString().split(',').join(" & <br />"));
+          $(this).children(".card-title").html(ingoo + " &");
+          $(this).children(".card-body").html(affinityDb[strippedIngoo].affinities[index].toString().split(',').join(" & <br />"));
           $('.results1').removeClass("d-none");
-          // console.log(index)
-
+          $('.orTry').addClass('d-none')
         }
       });
-    }
-    else {
+    } else {
       console.log("not found");
-      $(".nonExist").removeClass("d-none")
+      $(".nonExist").removeClass("d-none");
+      $(".orTry").addClass("d-none");
     }
+  }
 
 
-    console.log(item.value)
+  $('#ing1').on('typeahead:selected', function (evt, item) {
+    lookupTool(item.value)
   })
+
   let engine = new Bloodhound({
-    local: Object.keys(localDb),
+    local: Object.keys(affinityDb),
     remote: {
       wildcard: '%QUERY',
       url: 'https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=a28bfe4ec27d4aab800593279a6efcf7&query=%QUERY&number=10',
