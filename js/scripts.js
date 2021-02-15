@@ -26,7 +26,7 @@ $(document).ready(function () {
     "Banana": "🍌",
     "Coconut": "🥥",
     "Tomato": "🍅",
-    "Avocado": "🥑",
+    "Avocados": "🥑",
     "Eggplant": "🍆",
     "Carrot": "🥕",
     "Broccoli": "🥦",
@@ -47,17 +47,34 @@ $(document).ready(function () {
   }
 //TODO add all emoji foods to db
 //TODO add recipe suggestion section
-//TODO add isVegan isVegetarian props
+//TODO add isVegan isVegetarian isGF props
 
   const affinityDb = {
     "apple": {
       affinities: {
         0: ["Allspice", "Cinnamon", "Cloves", "Ginger", "Maple Syrup", "Orange"],
-        1: ["almonds", "cinnnamon", "rosemary"],
-        2: ["caramel", "nuts"],
-        3: ["cloves", "cranberries", "oranges"],
-        4: [""],
+        1: ["Almonds", "Cinnnamon", "Rosemary"],
+        2: ["Caramel", "Nuts"],
+        3: ["Cloves", "Cranberries", "Oranges"],
+        4: ["Cinnamon", "Raisins", "Walnuts"],
         5: [""]
+      },
+      dishes: {
+
+      }
+    },
+    "avocados": {
+      affinities: {
+        0: ["Cilantro", "Garlic", "Lime", "Red Onions", "Tomatoes"],
+        1: ["Almond Butter", "Banana", "Cocoa Powder"],
+        2: ["Cucumber", "Green Onions", "Lime"],
+        3: ["Basil", "Onion", "Tomatoes"],
+        4: [],
+        5: []
+      },
+      dishes: {
+        0: ["Hass Abocado Sorbet With Lemon Confit, Sicilian Pistachios and Nasturtium", "Per Se (New York City)"],
+        1: ["Grilled Brokaw Avocado and Quinoa Salad with Pumpkin Seeds, Chilies, Watermelon Radish and Grilled Serano Salsa Verde", "Greens Restaurant (San Francisco)"]
       }
     },
     "black beans": {
@@ -84,8 +101,10 @@ $(document).ready(function () {
       affinities: {
         0: ["Chiles", "Garlic Powder", "Olive Oil"],
         1: ["Garlic", "Ginger" , "Sesame Oil", "Tamari"],
-        2: []
-
+        2: ["Lime", "Noodles", "Peanuts"],
+        3: ["Rice Vinegar", "Sesame oil", "Sesame Seeds", "Soy Sauce/Tamari"],
+        4: ["Almonds", "Mushrooms"],
+        5: ["Lemons", "Parsley"]
       }
     },
     "coffee": {
@@ -145,17 +164,20 @@ $(document).ready(function () {
     lookupTool(t);
   });
 
-  const lookupTool = function (ingoo) {
+  const lookupTool = (ingoo) => {
     console.log(ingoo.toLowerCase())
     let strippedIngoo = emojiStrip(ingoo).trim().toLowerCase()
     if (affinityDb.hasOwnProperty(strippedIngoo)) {
-      $(".card").each(function (index) {
-        let strippedT = emojiStrip(ingoo).trim()
+      $(".affinCard").each(function (index) {
         if (!$(this).hasClass("loadMoreCard")) {
           $(this).children(".card-title").html(ingoo + " &");
           $(this).children(".card-body").html(affinityDb[strippedIngoo].affinities[index].toString().split(',').join(" & <br />"));
           $('.results1').removeClass("d-none");
-          $('.orTry').addClass('d-none')
+          $('.orTry').addClass('d-none');
+
+          if (affinityDb[strippedIngoo].hasOwnProperty("dishes")) {          
+            $(".dishCard").eq(index).html(affinityDb[strippedIngoo].dishes[index])
+            $(".dishCard").eq(index).removeClass("d-none"); }
         }
       });
     } else {
@@ -164,7 +186,6 @@ $(document).ready(function () {
       $(".orTry").addClass("d-none");
     }
   }
-
 
   $('#ing1').on('typeahead:selected', function (evt, item) {
     lookupTool(item.value)
