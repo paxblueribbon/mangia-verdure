@@ -73,9 +73,13 @@ $(document).ready(function () {
         5: []
       },
       dishes: {
-        0: ["Hass Abocado Sorbet With Lemon Confit, Sicilian Pistachios and Nasturtium", "Per Se (New York City)"],
-        1: ["Grilled Brokaw Avocado and Quinoa Salad with Pumpkin Seeds, Chilies, Watermelon Radish and Grilled Serano Salsa Verde", "Greens Restaurant (San Francisco)"]
-      }
+        0: ["https://frommybowl.com/crispy-baked-avocado-fries/", "Crispy Baked Avocado Fries (Vegan & Gluten-Free)", "frommybowl.com"],
+        1: ["https://simple-veganista.com/stuffed-avocados/", "Stufed Avocados (+ 10 Filling Ideas)", "simple-veganista.com"]
+      },
+      isVegetarian: true,
+      isVegan: true,
+      isGF: true,
+      isSoyFree: true
     },
     "black beans": {
       affinities : {
@@ -96,6 +100,9 @@ $(document).ready(function () {
         4: ["Cashews", "Pineapple"],
         5: ["Peaches", "Raspberries"]
       },
+      dishes: {
+        0: ["https://simple-veganista.com/vegan-banana-tea-bread/", "Vegan Banana Bread (Easy + Healthy) - The Simple Veganista", "simple-veganista.com"]
+      }
     },
     "broccoli": {
       affinities: {
@@ -134,14 +141,13 @@ $(document).ready(function () {
     $(".suggestionButton").eq(i).text(myThree[i]);
   }
 
-  $("#createButton").on('click', function () {
+  $(".btnCreate").on('click', function () {
     var value = $("#ing1").val()
-    console.log(value);
     $("#mainIngName").val(value);
   })
 
-  $("#submitButton").on('click', function () {
-    var mainIng = $("#mainIngName").val()
+  $("#submitNewIngButton").on('click', function () {
+    var mainIng = emojiStrip($("#mainIngName").val())
     var combWith = $("#added-ing-text").val()
     var arr = [combWith]
     affinityDb[mainIng] = arr
@@ -158,8 +164,6 @@ $(document).ready(function () {
 
   $('.suggestionButton').on('click', function () {
     var t = $(this).text()
-    var strippedT = emojiStrip(t).trim()
-    console.log(t);
     $("#ing1").val(t);
     lookupTool(t);
   });
@@ -175,9 +179,14 @@ $(document).ready(function () {
           $('.results1').removeClass("d-none");
           $('.orTry').addClass('d-none');
 
-          if (affinityDb[strippedIngoo].hasOwnProperty("dishes")) {          
-            $(".dishCard").eq(index).html(affinityDb[strippedIngoo].dishes[index])
-            $(".dishCard").eq(index).removeClass("d-none"); }
+          if (affinityDb[strippedIngoo].hasOwnProperty("dishes")) {
+            if (affinityDb[strippedIngoo].dishes.hasOwnProperty(index)) {
+              let recipeLink = `<a class="text-dark" target="_blank" href=${affinityDb[strippedIngoo].dishes[index][0]}>${affinityDb[strippedIngoo].dishes[index][1]}</a>`
+              $(".dishCard").eq(index).children(".card-body").html(recipeLink)
+              $(".dishCard").eq(index).children(".card-footer").text(affinityDb[strippedIngoo].dishes[index][2])
+              $(".dishCard").eq(index).removeClass("d-none");
+            }         
+             }
         }
       });
     } else {
@@ -190,6 +199,7 @@ $(document).ready(function () {
   $('#ing1').on('typeahead:selected', function (evt, item) {
     lookupTool(item.value)
   })
+
 
   let engine = new Bloodhound({
     local: Object.keys(affinityDb),

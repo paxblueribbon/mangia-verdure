@@ -10,6 +10,8 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,7 +22,7 @@
 </head>
 
 <body>
-
+  <!-- begin jumbotron -->
   <div class="jumbotron jumbotron-fluid pb-0 pt-2">
     <div class="container-fluid">
       <div class="row">
@@ -36,12 +38,14 @@
       </div>
     </div>
   </div>
+  <!-- end jumbotron -->
+  <!-- begin add affinity modal -->
   <div class="modal fade" id="newIngModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New Ingredient</h5>
+          <h5 class="modal-title" id="exampleModalLabel">New Ingredient Affinity</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -57,11 +61,10 @@
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <input type="text" class="form-control" id="mainIngName">
+                    <input readonly type="text" class="form-control" id="mainIngName">
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
                 <div class="row">
                   <div class="col-12">
@@ -82,11 +85,86 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
+          <button type="button" class="btn btn-primary" id="submitNewIngButton">Submit</button>
         </div>
       </div>
     </div>
   </div>
+  <!-- End add flavor affinity modal -->
+  <!-- Begin add recipe modal -->
+  <div class="modal fade" id="newRecipeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">New Recipe</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <form>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-12">
+                    <label for="mainIngNameRecipe" class="col-form-label">Main Ingredient:</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <input readonly type="text" class="form-control" id="mainIngNameRecipe">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-12">
+                    <label for="ingURL" class="col-form-label">Ingredient URL:</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-10">
+                    <input type="text" class="form-control" id="ingURL">
+                  </div>
+                  <div class="col-2">
+                    <button type="button" id="modalSearchButton" class="btn"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-12">
+                    <label for="recipeName" class="col-form-label">Recipe Name:</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <input type="text" class="form-control" id="recipeName">
+                  </div>
+                </div>
+                <div class="row pt-2">
+                  <div class="col-12">
+                    <label for="recipeSource">Recipe Source</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <input type="text" class="form-control" id="recipeSource">
+                  </div>
+                </div>
+              </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" id="submitRecipeButton">Submit</button>
+    </div>
+  </div>
+  </div>
+  </div>
+  <!--End add recipe modal  -->
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-10 col-md-6 mx-auto text-center">
@@ -125,7 +203,6 @@
       </div>
     </row>
   </div>
-  <!-- TODO Identify Affinities Section & Make Dishes Section -->
   <!-- TODO Make blank cards something sensible & aesthetic -->
   <div class="container-fluid">
     <div class="row results1 d-none">
@@ -188,10 +265,17 @@
       </div>
     </div>
     <div class="row results1 d-none">
-      <a class="btn col-12 pt-3 disabled" role="button" href="#">
+      <a class="btn col-6 pt-3 disabled" role="button" href="#">
         <div class="card affinCard loadMoreCard">
           <div class="card-body loadMore">
             <h3 class="text-center">Load More</h3>
+          </div>
+        </div>
+      </a>
+      <a class="btn col-6 pt-3 btnCreate" data-target="#newIngModal" data-toggle="modal" role="button">
+        <div class="card affinCard loadMoreCard">
+          <div class="card-body loadMore">
+            <h3 class="text-center">Add A Flavor Profile</h3>
           </div>
         </div>
       </a>
@@ -200,12 +284,18 @@
 
   <div class="container-fluid">
     <div class="row results1 d-none">
+      <div class="col">
+        <p class="text-center"><span class="bg-success">Recipes</span></p>
+      </div>
+    </div>
+    <div class="row results1 d-none">
       <div class="col-6 col-md-4">
         <div class="card dishCard bg-warning h-100 animate__animated animate__backInDown">
           <div class="card-title"></div>
           <div class="card-body">
-            <h3 class="card-text">Card 1<br>Ing 2</h3>
+            <h3 class="card-text">Card 1</h3>
           </div>
+          <div class="card-footer"></div>
         </div>
       </div>
       <div class="col-6 col-md-4">
@@ -214,6 +304,7 @@
           <div class="card-body">
             <h3 class="card-text">Card 2</h3>
           </div>
+          <div class="card-footer"></div>
         </div>
       </div>
       <div class="w-100 d-block d-md-none"></div>
@@ -224,6 +315,7 @@
           <div class="card-body">
             <h3 class="card-text">Card 3</h3>
           </div>
+          <div class="card-footer"></div>
         </div>
       </div>
       <div class="w-100 d-none d-md-block"></div>
@@ -233,6 +325,7 @@
           <div class="card-body">
             <h3 class="card-text">Card 4</h3>
           </div>
+          <div class="card-footer"></div>
         </div>
       </div>
       <div class="w-100 d-block d-md-none"></div>
@@ -242,6 +335,7 @@
           <div class="card-body">
             <h3 class="card-text">Card 5</h3>
           </div>
+          <div class="card-footer"></div>
         </div>
       </div>
       <div class="col-6 col-md-4 pt-3 h-100">
@@ -250,14 +344,22 @@
           <div class="card-body">
             <h3 class="card-text">Card 6</h3>
           </div>
+          <div class="card-footer"></div>
         </div>
       </div>
     </div>
     <div class="row results1 d-none">
-      <a class="btn col-12 pt-3 disabled" role="button" href="#">
+      <a class="btn col-6 disabled" role="button" href="#">
         <div class="card dishCard loadMoreCard">
           <div class="card-body loadMore">
             <h3 class="text-center">Load More</h3>
+          </div>
+        </div>
+      </a>
+      <a class="btn btnCreate col-6" role="button" data-target="#newRecipeModal" data-toggle="modal">
+        <div class="card d-flex dishCard loadMoreCard">
+          <div class="card-body loadMore">
+            <h3 class="text-center align-self-center">Add A Recipe Link</h3>
           </div>
         </div>
       </a>
@@ -279,13 +381,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
   <script type="module" src="/node_modules/emoji-strip/dist/emoji-strip.min.js"></script>
   <script src="/js/scripts.js"></script>
+  <script src="/js/modals.js"></script>
 
 
   <footer class="container-fluid footer navbar d-none d-md-inline fixed-bottom">
-      <span class="text-muted">External libraries include <a href="">Bootstrap</a>, <a
-          href="https://jquery.com/">JQuery</a>, and Twitter Typeahead. Made
-        in 2021 by Paxana.</span>
+    <span class="text-muted">External libraries include <a href="">Bootstrap</a>, <a
+        href="https://jquery.com/">JQuery</a>, and <a href="https://twitter.github.io/typeahead.js/">Twitter
+        Typeahead</a>. Made
+      in 2021 by Paxana.</span>
   </footer>
 </body>
 
 </html>
+
+<!-- blockquote within card example
+<blockquote class="blockquote card-body">
+  <p class="mb-0">I will not follow where the path may lead, but I will go where there is no path
+      and I will leave a trail.</p>
+  <footer class="blockquote-footer">Muriel Strode,
+      <cite title="Source Title">"Wind Wafted Wild Flowers" - The Open Court, 1903</cite>
+  </footer>
+</blockquote> -->

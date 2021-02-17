@@ -8,7 +8,7 @@
     "lite": "lite-server",
     "start": "npm run lite"
   },
-  "type":"module",
+  "type": "module",
   "author": "paxie",
   "license": "ISC",
   "dependencies": {
@@ -16,6 +16,7 @@
     "bootstrap": "^4.6.0",
     "bootstrap-4-autocomplete": "^1.3.2",
     "emoji-strip": "^1.0.1",
+    "font-awesome": "^4.7.0",
     "jquery-typeahead": "^2.11.1"
   },
   "devDependencies": {
