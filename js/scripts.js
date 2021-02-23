@@ -1,4 +1,7 @@
-$(document).ready(function () {
+// import firebase from "firebase/app";
+// import 'firebase/database';
+
+$(function () {
   const substringMatcher = function (strs) {
     return function findMatches(q, cb) {
       var matches, substringRegex;
@@ -147,6 +150,7 @@ $(document).ready(function () {
   })
 
   $("#submitNewIngButton").on('click', function () {
+
     var mainIng = emojiStrip($("#mainIngName").val())
     var combWith = $("#added-ing-text").val()
     var arr = [combWith]

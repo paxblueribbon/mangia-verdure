@@ -10,11 +10,32 @@ $(document).ready(function () {
       url: "http://textance.herokuapp.com/title/" + inputURL,
       complete: function(data) {
         $("#recipeName").val(data.responseText);
-        // return data.responseText
       }
 });}
 
-//su
+$("#submitNewIngButton").on('click', function () {
+  console.log("submitNewIngButton hit");
+});
+
+$("#submitRecipeButton").on('click', function () {
+  console.log("submitRecipeButton hit");
+});
+
+$("#ingPlusButton").on('click', function () {
+  console.log("ingPlusButton hit");
+})
+
+$(".submitButton").on('click', function () {
+  console.log("submit clicked");
+})
+function writeTestData() {
+  firebase.database().ref('bababooey').set("bababooey");
+}
+
+function addSympatico(mainIng, secondIngs) {
+  const newPostKey = firebase.database().ref().child('posts').push().key;
+  firebase.database().ref(mainIng + "/" + "affinities/" + newPostKey).set(secondIngs);
+}
 
 function extractHostname(url) {
   var hostname;
@@ -39,5 +60,8 @@ function extractHostname(url) {
     let url = $("#ingURL").val()
     $("#recipeName").val(getTitleFromUrl(url)); 
     $("#recipeSource").val(extractHostname(url))
+    // writeTestData();
+    let testSympatico = ["clove", "cardamom"]
+    addSympatico("grape", testSympatico);
   } )
 })

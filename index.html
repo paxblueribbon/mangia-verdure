@@ -14,14 +14,31 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
   <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
+
+<!-- <script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCkTWq0Xi7ubmX84GkzFNDHKa8qRI3N_Ug",
+    authDomain: "mangiaverdure.firebaseapp.com",
+    databaseURL: "https://mangiaverdure-default-rtdb.firebaseio.com",
+    projectId: "mangiaverdure",
+    storageBucket: "mangiaverdure.appspot.com",
+    messagingSenderId: "900595487328",
+    appId: "1:900595487328:web:d917ecc5f20ab8d1536905",
+    measurementId: "G-VKY9MY35XZ"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script> -->
+
   <!-- begin jumbotron -->
   <div class="jumbotron jumbotron-fluid pb-0 pt-2">
     <div class="container-fluid">
@@ -76,7 +93,7 @@
                     <input type="text" class="form-control" id="added-ing-text">
                   </div>
                   <div class="col-2">
-                    <button class="btn">+</button>
+                    <button id="ingPlusButton" class="btn">+</button>
                   </div>
                 </div>
               </div>
@@ -85,7 +102,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="submitNewIngButton">Submit</button>
+          <button type="button" class="btn btn-primary submitButton" id="submitNewIngButton">Submit</button>
         </div>
       </div>
     </div>
@@ -159,7 +176,7 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary" id="submitRecipeButton">Submit</button>
+      <button type="button" class="btn btn-primary submitButton" id="submitRecipeButton">Submit</button>
     </div>
   </div>
   </div>
@@ -370,6 +387,36 @@
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCkTWq0Xi7ubmX84GkzFNDHKa8qRI3N_Ug",
+    authDomain: "mangiaverdure.firebaseapp.com",
+    databaseURL: "https://mangiaverdure-default-rtdb.firebaseio.com",
+    projectId: "mangiaverdure",
+    storageBucket: "mangiaverdure.appspot.com",
+    messagingSenderId: "900595487328",
+    appId: "1:900595487328:web:d917ecc5f20ab8d1536905",
+    measurementId: "G-VKY9MY35XZ"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
